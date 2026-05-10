@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecosistema 5 Marcas — Hostelería España + Italia 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a1a2e;
+      --gold: #D4AF37;
+      --blue: #2C5F8A;
+      --light-bg: #f8f7f4;
+      --text: #1a1a2e;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    section { padding: 64px 0; }
+    section:nth-child(even) { background: var(--light-bg); }
+
+    h1 { font-size: 52px; font-weight: 900; line-height: 1.1; }
+    h2 { font-size: 32px; font-weight: 800; margin-bottom: 24px; line-height: 1.2; }
+    h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    p  { font-size: 18px; margin-bottom: 18px; }
+    ul { padding-left: 24px; margin-bottom: 18px; }
+    li { font-size: 18px; margin-bottom: 8px; line-height: 1.7; }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    /* COVER */
+    .cover {
+      background: var(--navy);
+      color: var(--white);
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .cover-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+    .cover-sub {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .cover-desc {
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      max-width: 580px;
+      margin: 0 auto 32px;
+    }
+    .cover-divider {
+      width: 80px; height: 3px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+    }
+    .cover-date {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 2px;
+    }
+
+    /* BOXES */
+    .box-gold {
+      border: 2px solid var(--gold);
+      border-left: 6px solid var(--gold);
+      background: #fdf9ee;
+      padding: 28px 32px;
+      border-radius: 6px;
+      margin: 28px 0;
+    }
+    .box-navy {
+      background: var(--navy);
+      color: var(--white);
+      border-left: 6px solid var(--gold);
+      padding: 28px 32px;
+      border-radius: 6px;
+      margin: 28px 0;
+    }
+    .box-navy p, .box-navy li, .box-navy h3 { color: var(--white); }
+    .box-blue {
+      border-left: 6px solid var(--blue);
+      background: #eef4fa;
+      padding: 28px 32px;
+      border-radius: 6px;
+      margin: 28px 0;
+    }
+    .box-warning {
+      border-left: 6px solid var(--gold);
+      background: #fdf9ee;
+      padding: 20px 28px;
+      border-radius: 6px;
+      margin: 28px 0;
+    }
+
+    /* TABLE */
+    .brand-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 17px;
+    }
+    .brand-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .brand-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid #e0ddd6;
+      vertical-align: top;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .brand-table tr:nth-child(even) td { background: #f8f7f4; }
+    .brand-name {
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .brand-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .badge-it   { background: #27ae6018; color: #27ae60; border: 1px solid #27ae60; }
+    .badge-es   { background: #e74c3c18; color: #c0392b; border: 1px solid #c0392b; }
+    .badge-ai   { background: #2C5F8A18; color: var(--blue); border: 1px solid var(--blue); }
+    .badge-plat { background: #D4AF3718; color: #9a7a0a; border: 1px solid var(--gold); }
+
+    /* TRAFFIC CARDS */
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 28px 0;
+    }
+    .traffic-card {
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      padding: 28px 24px;
+      background: var(--white);
+    }
+    .traffic-card .icon { font-size: 36px; margin-bottom: 12px; display: block; }
+    .traffic-card .tag {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .traffic-card h3 { color: var(--navy); margin-bottom: 10px; font-size: 20px; }
+    .traffic-card p { font-size: 16px; margin-bottom: 10px; }
+    .traffic-card .cadenza { font-size: 14px; font-weight: 700; color: var(--blue); }
+
+    /* CLIP ECONOMY */
+    .clip-flow { margin: 32px 0; }
+    .clip-block {
+      padding: 22px 28px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .clip-block small { display: block; font-weight: 400; font-size: 15px; margin-top: 6px; }
+    .clip-block.navy { background: var(--navy); color: var(--white); }
+    .clip-block.gold { background: var(--gold); color: var(--navy); }
+    .clip-block.blue { background: var(--blue); color: var(--white); }
+    .clip-arrow { text-align: center; font-size: 28px; color: var(--gold); padding: 4px 0; }
+
+    /* FUNNEL */
+    .funnel { margin: 36px auto; max-width: 700px; }
+    .funnel-level {
+      display: block;
+      margin: 0 auto 4px;
+      padding: 18px 20px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .funnel-level small {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      margin-top: 6px;
+      opacity: 0.85;
+    }
+    .funnel-arrow { text-align: center; font-size: 22px; color: #aaa; margin: 2px 0; }
+    .fl-1 { width: 100%; background: #eaf2fb; color: var(--navy); border: 2px solid var(--blue); }
+    .fl-2 { width: 85%;  background: #d5e8f5; color: var(--navy); border: 2px solid var(--blue); }
+    .fl-3 { width: 70%;  background: var(--blue); color: var(--white); }
+    .fl-4 { width: 55%;  background: var(--navy); color: var(--white); }
+    .fl-5 { width: 40%;  background: var(--gold); color: var(--navy); }
+
+    /* STEPS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 28px 0;
+    }
+    .step-card {
+      background: var(--white);
+      border: 2px solid #e0ddd6;
+      border-radius: 10px;
+      padding: 32px 28px;
+    }
+    .step-card:hover { border-color: var(--gold); }
+    .step-num {
+      font-size: 68px; font-weight: 900;
+      color: var(--gold); line-height: 1; margin-bottom: 12px;
+    }
+    .step-card h3 { font-size: 20px; margin-bottom: 12px; }
+    .step-card p, .step-card li { font-size: 17px; }
+
+    /* BEFORE/AFTER */
+    .example-block {
+      margin: 32px 0;
+      border: 1px solid #e0ddd6;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .example-header {
+      background: var(--navy);
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 14px 24px;
+    }
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .ba-before { background: #fef0ee; border-right: 1px solid #e0ddd6; padding: 24px; }
+    .ba-after  { background: #eafaf1; padding: 24px; }
+    .ba-label {
+      font-size: 13px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;
+    }
+    .ba-before .ba-label { color: #c0392b; }
+    .ba-after  .ba-label { color: #27ae60; }
+    .ba-before p, .ba-after p { font-size: 16px; margin-bottom: 0; line-height: 1.65; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 48px 40px;
+      font-size: 15px;
+      line-height: 2.2;
+    }
+    footer strong { color: var(--gold); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .container  { padding: 0 20px; }
+      section     { padding: 48px 0; }
+      h2          { font-size: 26px; }
+      .cover-title { font-size: 34px; }
+      .cover-sub   { font-size: 20px; }
+      .card-grid-3 { grid-template-columns: 1fr; }
+      .steps-grid  { grid-template-columns: 1fr; }
+      .ba-grid     { grid-template-columns: 1fr; }
+      .ba-before   { border-right: none; border-bottom: 1px solid #e0ddd6; }
+      .funnel-level { width: 100% !important; }
+      .brand-table  { font-size: 14px; }
+      .brand-table th, .brand-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-title">ECOSISTEMA 5 MARCAS</div>
+  <div class="cover-sub">Hostelería España + Italia 2026</div>
+  <div class="cover-divider"></div>
+  <p class="cover-desc">Documento estratégico interno — Sistema de posicionamiento para cinco marcas complementarias en el mercado de la restauración</p>
+  <div class="cover-date">MAYO 2026 · VERSIÓN 1.0 · ESPAÑOL</div>
+</header>
+
+<!-- 1. EL PROYECTO -->
+<section>
+  <div class="container">
+    <div class="section-label">01 — El Proyecto</div>
+    <h2>Cinco Marcas, un Solo Método</h2>
+
+    <p>Este documento describe la estrategia de un ecosistema formado por <strong>cinco marcas complementarias</strong>, todas enfocadas en el mercado de la hostelería — restaurantes, bares, locales de restauración — en España e Italia. Ninguna marca es "principal": cada una tiene un ángulo de entrada distinto, se dirige a un segmento específico y ofrece servicios que no se solapan.</p>
+
+    <p>Un restaurante puede adoptar una, dos o las cinco marcas. La complementariedad es el punto fuerte: juntas cubren todo el ciclo operativo y comercial del local — desde la plataforma de gestión hasta la consultoría estratégica.</p>
+
+    <div class="box-gold">
+      <strong>La visión compartida:</strong> Transformar los restaurantes y bares en máquinas de captación de clientes y gestión eficiente — eliminando la dependencia total del titular en las operaciones del día a día — a través de estrategia, automatización y formación del personal.
+    </div>
+
+    <p>El mercado de referencia principal para las marcas españolas es <strong>Orihuela Costa y la Costa Blanca</strong> (Alicante). La marca italiana opera en el mercado de la restauración en Italia. El mismo método, mercados diferentes.</p>
+  </div>
+</section>
+
+<!-- 2. EL MERCADO -->
+<section>
+  <div class="container">
+    <div class="section-label">02 — El Mercado</div>
+    <h2>Orihuela Costa y la Costa Blanca: un Mercado Enorme e Infrautilizado</h2>
+
+    <p>La Costa Blanca (provincia de Alicante) es uno de los mercados turísticos más boyantes de España. En 2024 la provincia recibió más de <strong>8 millones de turistas extranjeros</strong> — con un crecimiento del 15% respecto al año anterior. La ocupación hotelera alcanzó el <strong>91,8% en agosto de 2025</strong>.</p>
+
+    <p>Orihuela Costa — que comprende las zonas de Punta Prima, Playa Flamenca, La Zenia, Cabo Roig, Villamartín, Campoamor y Mil Palmeras — es el corazón residencial y turístico de la zona. Cientos de restaurantes, bares y locales sirven cada semana a miles de turistas europeos: británicos, alemanes, escandinavos, italianos. Un mercado amplio, estacional y con altísima rotación de clientela.</p>
+
+    <div class="box-navy">
+      <h3 style="color: var(--gold); margin-bottom: 16px;">Los problemas que nadie resuelve aún bien</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 12px; color: #fff;">❌ <strong>WhatsApp desbordado</strong> los viernes y sábados por la noche — cada mensaje sin respuesta es una reserva regalada a la competencia</li>
+        <li style="margin-bottom: 12px; color: #fff;">❌ <strong>No-shows</strong>: una mesa de 4 que no se presenta = €80–150 de margen quemado sin previo aviso, en una sola noche</li>
+        <li style="margin-bottom: 12px; color: #fff;">❌ <strong>Instagram abandonado</strong> — los turistas buscan información y reservan por DM; el local no responde o responde al día siguiente</li>
+        <li style="margin-bottom: 12px; color: #fff;">❌ <strong>Personal sin formación</strong> sobre los platos del día, los cócteles destacados, las promociones activas</li>
+        <li style="margin-bottom: 12px; color: #fff;">❌ <strong>Dependencia total del titular</strong> — si cae enfermo o se ausenta, el local se ralentiza o se paraliza</li>
+        <li style="color: #fff;">❌ <strong>Cero reseñas de Google</strong> recogidas de forma sistemática — baja visibilidad orgánica gratuita en Maps</li>
+      </ul>
+    </div>
+
+    <p>Un restaurante que pierde solo 3-4 reservas cada fin de semana por falta de respuesta deja de ingresar entre <strong>€12.000 y €25.000 al año</strong> en facturación potencial. No por mala cocina — por ausencia de gestión digital.</p>
+
+    <div class="box-blue">
+      <h3 style="margin-bottom: 10px;">La comunidad italiana en España</h3>
+      <p style="margin-bottom: 0;">Una parte significativa de los hosteleros de la zona es de origen italiano — frecuentemente personas que dejaron Italia en los últimos 10-15 años para abrir un local en España. Esta comunidad quiere recibir apoyo en su propio idioma, de alguien que entiende la realidad del emprendedor italiano en el extranjero. Ese es el ángulo específico de <strong>lengosteeno.com</strong> — mismo idioma, misma mentalidad, misma realidad vivida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. LAS 5 MARCAS -->
+<section>
+  <div class="container">
+    <div class="section-label">03 — El Ecosistema</div>
+    <h2>Las 5 Marcas: Roles, Ángulos y Servicios</h2>
+
+    <p>Cada marca tiene un punto de entrada diferente hacia el mismo cliente. El objetivo es que un hostelero pueda adoptarlas de forma secuencial — o en paralelo — sin que se solapen nunca.</p>
+
+    <table class="brand-table">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Categoría</th>
+          <th>Ángulo estratégico</th>
+          <th>Qué ofrece concretamente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="brand-name">BAI</span>
+            <span class="brand-badge badge-plat">Plataforma</span>
+          </td>
+          <td>Sistema de gestión todo en uno</td>
+          <td><em>"Todo en un único lugar"</em></td>
+          <td>Plataforma digital completa para gestionar reservas, CRM, automatizaciones y comunicaciones del local. <strong>€200/mes.</strong> La demo es gratuita y se realiza por videollamada: el emprendedor ve el sistema en directo, configurado para su tipo de local, antes de decidir.</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="brand-name">Maksipi</span>
+            <span class="brand-badge badge-ai">IA + Automatización</span>
+          </td>
+          <td>Servicios de IA y automatizaciones específicas para hostelería</td>
+          <td><em>"Forma a tu personal y ahorra tiempo y dinero — cada día, en automático"</em></td>
+          <td>Chatbot WhatsApp activo 24/7 · Respuestas automáticas en Instagram · Recordatorios anti no-show para clientes · Recogida automática de reseñas · Envío diario automático de la ficha del cóctel/plato del día a todo el personal (formación continua sin reuniones). La formación es el eje central — no un servicio adicional.</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="brand-name">lengosteeno.com</span>
+            <span class="brand-badge badge-it">🇮🇹 Italianos en España</span>
+          </td>
+          <td>Consultoría estratégica en italiano</td>
+          <td><em>"Te entiendo porque conozco esta realidad desde dentro"</em></td>
+          <td>Estrategia empresarial · Búsqueda y selección de personal · Marketing · Supervisión de automatizaciones · Posicionamiento profesional del local. Dirigido a emprendedores italianos que gestionan un local en España — mismo idioma, misma mentalidad, apoyo de quien conoce la realidad del italiano en el extranjero.</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="brand-name">lengosteeno.es</span>
+            <span class="brand-badge badge-es">🇪🇸 Mercado español</span>
+          </td>
+          <td>Consultoría estratégica en español</td>
+          <td><em>"Posicionamiento profesional y crecimiento estructurado"</em></td>
+          <td>Los mismos servicios de lengosteeno.com — estrategia, selección de personal, marketing, automatizaciones — pero dirigidos a emprendedores españoles, con posicionamiento narrativo y comunicación adaptados al mercado local español.</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="brand-name">Webloom</span>
+            <span class="brand-badge badge-it">🇮🇹 Italia</span>
+          </td>
+          <td>Consultoría estratégica para el mercado italiano</td>
+          <td><em>"El mismo sistema que funciona en España — aplicado a tu restaurante en Italia"</em></td>
+          <td>Los mismos servicios de lengosteeno.com — estrategia, selección de personal, marketing, automatizaciones, posicionamiento — dirigidos a emprendedores italianos que operan en Italia. Subcategoría principal: <strong>Webloom Ristorante</strong>. Mismo método, mismo sistema, mercado italiano.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box-gold" style="margin-bottom: 20px;">
+      <strong>Nota sobre las marcas lengosteeno:</strong> lengosteeno.com y lengosteeno.es son marcas vinculadas a una persona específica como consultor estratégico — no a una empresa genérica. El valor está también en la relación personal y en la experiencia directa sobre el terreno. Webloom lleva el mismo enfoque al mercado italiano.
+    </div>
+
+    <div class="box-blue">
+      <h3 style="margin-bottom: 12px;">🍹 La formación diaria automática — El hilo conductor de Maksipi</h3>
+      <p>Cada mañana, antes de abrir, todo el personal recibe automáticamente en el móvil la <strong>ficha del día</strong>: nombre del cóctel o del plato especial, ingredientes, método de preparación, precio recomendado, sugerencia de venta o maridaje.</p>
+      <p>No hace falta que el titular recuerde comunicarlo. No hace falta una reunión. No hace falta que los camareros del turno de tarde descubran el cóctel del día cuando el cliente ya lo ha pedido.</p>
+      <p style="margin-bottom: 0;"><strong>Resultado medible:</strong> el personal habla con confianza de las especialidades. Aumenta el valor percibido del servicio. Aumentan las ventas de los platos y cócteles de alto margen. Esto no es un paquete separado — es la filosofía que sustenta todo lo que hace Maksipi.</p>
+    </div>
+
+    <p>La diferencia entre lengosteeno.com y lengosteeno.es no está en los servicios ofrecidos — está en el <strong>lenguaje, la narrativa y la empatía cultural</strong>. El italiano que ha abierto un bar en La Zenia necesita sentirse comprendido en su idioma por alguien que conoce esa realidad. El español de la misma zona necesita un enfoque profesional en su propio lenguaje. El sistema es el mismo — el puente es diferente.</p>
+  </div>
+</section>
+
+<!-- 4. TRÁFICO -->
+<section>
+  <div class="container">
+    <div class="section-label">04 — Estrategia de Tráfico</div>
+    <h2>Cómo Generamos Visibilidad hacia las Cinco Marcas</h2>
+
+    <p>El tráfico hacia las cinco marcas se genera a través de tres canales principales. Cada canal tiene un papel específico e irreemplazable — se usan juntos, no como alternativas.</p>
+
+    <div class="card-grid-3">
+      <div class="traffic-card">
+        <span class="icon">💼</span>
+        <div class="tag">Autoridad y cualificación</div>
+        <h3>LinkedIn</h3>
+        <p>Posts de texto con hook potente + imagen de portada + CTA que lleva al link de la landing page. <strong>Sin vídeo en LinkedIn.</strong> El objetivo es construir autoridad en el sector y llevar tráfico cualificado a la landing.</p>
+        <div class="cadenza">→ 3-4 posts/semana por perfil</div>
+      </div>
+
+      <div class="traffic-card">
+        <span class="icon">📱</span>
+        <div class="tag">Volumen algorítmico</div>
+        <h3>YouTube Shorts</h3>
+        <p>Clips cortos generados con inteligencia artificial. El objetivo es producir alto volumen — hasta 5 clips/día por cuenta — para que el algoritmo trate el perfil como un "tema en tendencia", generando tráfico orgánico sin costes publicitarios directos.</p>
+        <div class="cadenza">→ Diario, en automático</div>
+      </div>
+
+      <div class="traffic-card">
+        <span class="icon">🎯</span>
+        <div class="tag">Conversión</div>
+        <h3>Landing Page</h3>
+        <p>Una página dedicada por marca, con un solo objetivo: reservar una llamada o solicitar la demo. Es el destino final de todo el tráfico generado desde LinkedIn y YouTube Shorts.</p>
+        <p style="font-size: 15px; color: var(--blue);">lengosteeno.com → italianos<br>lengosteeno.es → españoles</p>
+        <div class="cadenza">→ Un único objetivo por página</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CLIP ECONOMY -->
+<section>
+  <div class="container">
+    <div class="section-label">05 — Sistema de Contenidos</div>
+    <h2>La Clip Economy: Contenidos de IA a Escala</h2>
+
+    <div class="box-navy">
+      <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; text-align: center; color: #fff;">"Publicar volumen. Conquistar el algoritmo. Convertir el tráfico en clientes."</p>
+    </div>
+
+    <p>El modelo está inspirado en la estrategia que usan las plataformas de streaming en vivo para dominar los feeds sociales: publicar una cantidad elevada de clips cortos hace que el algoritmo los interprete como un "tema en crecimiento" — generando visibilidad amplificada sin invertir en publicidad de pago.</p>
+
+    <p><strong>La diferencia clave respecto a quien hace streaming:</strong> los streamers ganan fracciones de céntimo por cada visualización (CPM cercano a cero en Europa). Nosotros usamos ese tráfico para vender servicios de alto valor. No hacen falta miles de millones de views — basta con que las personas adecuadas lleguen al embudo.</p>
+
+    <p><strong>Sin necesidad de grabar vídeos largos.</strong> El contenido se crea con inteligencia artificial — voiceover, guiones, imágenes, clips de vídeo. Donde sea necesario mostrar una cara humana, se evalúa en función de las herramientas disponibles. El sistema es AI-first, no depende de tener tiempo frente a una cámara.</p>
+
+    <div class="clip-flow">
+      <div class="clip-block navy">🧠 ESTRATEGIA HUMANA<br><small>Temas y ángulos definidos por quien conoce el mercado — una vez al mes</small></div>
+      <div class="clip-arrow">▼</div>
+      <div class="clip-block gold">🤖 LA IA GENERA EL CONTENIDO<br><small>Voiceover · Guiones · Imágenes · Clips de vídeo — cada día, en automático</small></div>
+      <div class="clip-arrow">▼</div>
+      <div class="clip-block blue">📤 DISTRIBUCIÓN AUTOMÁTICA<br><small>YouTube Shorts (5+ clips/día) · LinkedIn (portada + texto + enlace)</small></div>
+      <div class="clip-arrow">▼</div>
+      <div class="clip-block gold">📈 TRÁFICO ORGÁNICO<br><small>Miles de impresiones sin presupuesto publicitario directo</small></div>
+      <div class="clip-arrow">▼</div>
+      <div class="clip-block navy">💰 EMBUDO DE CAPTACIÓN<br><small>Landing page → Llamada → Informe → Venta</small></div>
+    </div>
+
+    <div class="box-warning">
+      <p style="margin-bottom: 0;"><strong>⚠️ Regla fundamental:</strong> El input de los contenidos viene <em>siempre</em> de un ser humano. La IA ejecuta, distribuye y optimiza — pero los temas, los ángulos y la revisión del método son responsabilidad humana. Sin control estratégico, el volumen se convierte en ruido. La revisión mensual del sistema es obligatoria.</p>
+    </div>
+
+    <h3 style="margin-top: 32px; margin-bottom: 12px;">Riesgos que hay que conocer y gestionar</h3>
+    <ul>
+      <li><strong>La máquina necesita alimentación constante:</strong> si se deja de publicar, el algoritmo olvida rápidamente — la visibilidad cae en pocos días</li>
+      <li><strong>LinkedIn requiere calibración del tono:</strong> el alto volumen funciona en YouTube Shorts; en LinkedIn la reputación profesional es fundamental y el ritmo debe adaptarse</li>
+      <li><strong>Normativa europea sobre publicidad:</strong> donde lo exija la ley, los contenidos promocionales deben declararse explícitamente como publicidad</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. EL EMBUDO -->
+<section>
+  <div class="container">
+    <div class="section-label">06 — El Embudo</div>
+    <h2>El Recorrido del Cliente: del Primer Contacto a la Venta</h2>
+
+    <p>Cada cliente potencial recorre las mismas fases, independientemente de la marca de entrada. El embudo cualifica progresivamente — solo quien está realmente interesado llega a la segunda llamada. Nadie pierde tiempo con personas que no están listas.</p>
+
+    <div class="funnel">
+      <div class="funnel-level fl-1">
+        📌 CEBO — Lead Magnet
+        <small>Tres opciones: Auditoría online del local · Guía "5 automatizaciones para activar ya" · Demo gratuita BAI (videollamada con el emprendedor)</small>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-level fl-2">
+        📄 INFO — Landing Page / Chat
+        <small>El prospect visita la landing. Lee la propuesta, rellena el formulario o abre el chat. Recibe la información básica sobre la marca.</small>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-level fl-3">
+        📞 1ª LLAMADA — Cualificación (20-30 min)
+        <small>Situación del local, problemas principales, presupuesto disponible. No se vende todavía — se escucha y se entiende.</small>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-level fl-4">
+        📊 2-3 DÍAS → INFORME PERSONALIZADO
+        <small>Documento con análisis del local y propuesta concreta enviada por escrito. El prospect estudia la propuesta con calma.</small>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-level fl-5">
+        💰 2ª LLAMADA → VENTA
+        <small>Se presenta el informe, se responden las preguntas, se cierra. El prospect llega ya informado y convencido por la propuesta.</small>
+      </div>
+    </div>
+
+    <div class="box-gold">
+      <strong>Por qué funciona este sistema:</strong> al prospect no se le "vende" — se le guía. Cada fase añade valor antes de pedir algo. Cuando llega a la segunda llamada, ya ha entendido su problema, ha visto la propuesta por escrito y quiere la solución. La tasa de cierre es significativamente más alta que con un enfoque comercial directo en frío.
+    </div>
+  </div>
+</section>
+
+<!-- 7. LOS 4 PASOS -->
+<section>
+  <div class="container">
+    <div class="section-label">07 — El Plan</div>
+    <h2>Los 4 Pasos para Construir el Sistema</h2>
+
+    <p>La estrategia se construye en 4 fases secuenciales. Cada fase produce un resultado concreto antes de pasar a la siguiente. No se salta ninguna fase.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Estrategia individual para cada marca</h3>
+        <p>Cada marca define su propuesta de valor, el mensaje principal y el ángulo de comunicación. Resultados concretos:</p>
+        <ul>
+          <li>Propuesta de valor clara para BAI, Maksipi, lengosteeno.com y .es</li>
+          <li>Ángulo narrativo específico para cada marca</li>
+          <li>Target primario de cada marca</li>
+          <li>Mensajes clave para LinkedIn, Shorts, landing</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Landing Page + Información</h3>
+        <p>Una landing por marca — sencilla, directa, con un solo objetivo (reservar la llamada o solicitar la demo).</p>
+        <ul>
+          <li>lengosteeno.com → italiano, para emprendedores italianos en España</li>
+          <li>lengosteeno.es → español, para el mercado local</li>
+          <li>Página dedicada Maksipi con las automatizaciones</li>
+          <li>Página BAI con botón "Reserva tu demo"</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Sistema de Contacto y Llamada</h3>
+        <p>El mecanismo que transforma un visitante en un prospect cualificado:</p>
+        <ul>
+          <li>Calendario integrado para reservar la primera llamada</li>
+          <li>Secuencia automática de seguimiento</li>
+          <li>Plantilla estándar para el informe personalizado</li>
+          <li>Sistema CRM para rastrear cada prospect desde la primera llamada al cierre</li>
+        </ul>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3>Creación de Contenidos para las Cinco Marcas</h3>
+        <p>Con la estrategia y los sistemas activos, se inicia la producción de contenidos:</p>
+        <ul>
+          <li>Definir temas y ángulos mensuales (input humano, una vez al mes)</li>
+          <li>La IA genera clips y textos cada día</li>
+          <li>LinkedIn: post + portada + enlace, 3-4 veces/semana</li>
+          <li>YouTube Shorts: clips diarios para volumen algorítmico</li>
+          <li>Revisión mensual del método obligatoria</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. EJEMPLOS PRÁCTICOS -->
+<section>
+  <div class="container">
+    <div class="section-label">08 — Ejemplos Prácticos</div>
+    <h2>Cómo Funciona en la Realidad: Restaurante en La Zenia, Orihuela Costa</h2>
+
+    <p>Para hacer el sistema concreto, imaginamos un caso real: un restaurante de cocina mediterránea en La Zenia, 12 mesas, 3 camareros, abierto 6 días a la semana. El titular lo gestiona todo — cocina, reservas, redes sociales, proveedores. Sin ningún sistema digital activo.</p>
+
+    <div class="example-block">
+      <div class="example-header">🕗 Ejemplo 1 — El Viernes por la Noche (Maksipi — Chatbot WhatsApp)</div>
+      <div class="ba-grid">
+        <div class="ba-before">
+          <div class="ba-label">✗ Antes</div>
+          <p>Son las 20:30. El teléfono del titular vibra cada cinco minutos con solicitudes de reserva por WhatsApp. Está cocinando. No responde. De 8 mensajes recibidos, lee 3 al día siguiente. Las otras 5 familias reservan en otro sitio. <strong>Facturación perdida: €200–350 en una sola noche.</strong> Multiplicado por 52 fines de semana.</p>
+        </div>
+        <div class="ba-after">
+          <div class="ba-label">✓ Después</div>
+          <p>El chatbot de WhatsApp responde a todos los mensajes en menos de 30 segundos, 24/7. Recoge nombre, número de personas y hora preferida. Envía la confirmación automática. El titular ve el resumen de reservas a la mañana siguiente. Cero mensajes perdidos. Cero viernes por la noche al teléfono en vez de en la cocina.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">📅 Ejemplo 2 — El No-show del Sábado (Maksipi — Recordatorios automáticos)</div>
+      <div class="ba-grid">
+        <div class="ba-before">
+          <div class="ba-label">✗ Antes</div>
+          <p>Sábado por la noche, una mesa de 6 no aparece. Sin aviso, sin mensaje. El local había reservado la mesa durante 45 minutos esperando. 6 plazas vacías en temporada alta = <strong>€180–270 de facturación perdida</strong> en una noche.</p>
+        </div>
+        <div class="ba-after">
+          <div class="ba-label">✓ Después</div>
+          <p>El sistema envía automáticamente un recordatorio la mañana de la reserva y un segundo mensaje 2 horas antes. Si no llega confirmación, pregunta activamente. La tasa de no-shows baja un 80%. Las mesas no confirmadas se liberan a tiempo para ser reasignadas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">🍹 Ejemplo 3 — El Cóctel del Día (Maksipi — Formación automática)</div>
+      <div class="ba-grid">
+        <div class="ba-before">
+          <div class="ba-label">✗ Antes</div>
+          <p>El barman ha preparado un especial con los limones frescos llegados esta mañana. El titular se lo dijo a los camareros del turno de noche, pero no a los del turno de tarde. Los clientes preguntan "¿cuál es el cóctel del día?" — dos camareros no saben responder. Venta de alto margen perdida.</p>
+        </div>
+        <div class="ba-after">
+          <div class="ba-label">✓ Después</div>
+          <p>Cada mañana a las 9:00, todos los miembros del personal reciben en el móvil: nombre del cóctel, ingredientes, precio, sugerencia de maridaje. Llega en automático, cada día. Todos saben qué proponer. Las ventas de los productos de alto margen aumentan un <strong>15–30% en el primer mes</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">🔍 Ejemplo 4 — La Búsqueda de Personal (lengosteeno.com)</div>
+      <div class="ba-grid">
+        <div class="ba-before">
+          <div class="ba-label">✗ Antes</div>
+          <p>El titular italiano en Orihuela Costa desde hace 5 años quiere contratar un jefe de sala. No sabe dónde buscarlo en España, cómo evaluarlo, cuánto ofrecer según el mercado local. Publica un anuncio, recibe 40 CVs, lee 30, llama a 12, entrevista a 6. <strong>3-4 semanas de trabajo perdido</strong> — mientras tanto lo gestiona todo él.</p>
+        </div>
+        <div class="ba-after">
+          <div class="ba-label">✓ Después</div>
+          <p>El equipo de lengosteeno.com define el perfil, gestiona la selección, filtra los candidatos. El titular solo se entrevista con los 3 finalistas cualificados. Ahorra 3-4 semanas de búsqueda y 10-15 horas de entrevistas inútiles. Recibe apoyo en italiano, de quien conoce la realidad del italiano que gestiona un local en España.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">📊 Ejemplo 5 — La Demo de la Plataforma (BAI)</div>
+      <div class="ba-grid">
+        <div class="ba-before">
+          <div class="ba-label">✗ Antes</div>
+          <p>El titular gestiona las reservas en papel, WhatsApp personal y una app descargada al azar. Tres sistemas distintos que no se comunican. Cada noche concilia manualmente quién ha confirmado, qué mesa está libre. Errores, estrés, dobles reservas ocasionales.</p>
+        </div>
+        <div class="ba-after">
+          <div class="ba-label">✓ Después</div>
+          <p>Con BAI recibe una videollamada donde ve el sistema en directo — no una presentación de diapositivas. Ve su tipo de local configurado, cómo funcionan las reservas, el CRM, las automatizaciones. A <strong>€200/mes</strong> todo está integrado. La demo dura 30 minutos y responde a cada pregunta antes de firmar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CÓMO UTILIZAMOS LOS MATERIALES -->
+<section>
+  <div class="container">
+    <div class="section-label">09 — Materiales y Próximos Pasos</div>
+    <h2>Cómo Utilizamos Este Documento</h2>
+
+    <p>Este documento es el punto de partida compartido para todas las marcas del ecosistema. No contiene las listas operativas de detalle — esas las gestiona quien las ejecuta, con su propio sistema de análisis y planificación.</p>
+
+    <div class="box-gold">
+      <strong>Cómo funciona la distribución de materiales:</strong> cada marca recibe su propio documento Markdown con el brief específico — ángulo, servicios, target, posicionamiento e instrucciones para la Clip Economy. Este HTML es el documento estratégico de conjunto; los briefs individuales son el punto de partida para la ejecución.
+    </div>
+
+    <p>Los análisis de mercado, los textos para las landing pages, las guías y los contenidos específicos se elaboran para cada marca por separado, partiendo de la base estratégica compartida descrita en este documento.</p>
+
+    <div class="box-blue">
+      <h3 style="margin-bottom: 10px;">Primer test: canales existentes</h3>
+      <p style="margin-bottom: 0;">El sistema Clip Economy se lanza primero en los <strong>canales online ya activos</strong> — perfiles y presencia digital ya construida a lo largo del tiempo. Esto permite probar el flujo de generación, distribución y conversión sin necesidad de construir una audiencia desde cero. Los resultados del test guían la réplica en todas las marcas.</p>
+    </div>
+
+    <p>Para la gestión operativa inicial se utiliza una única cuenta de plataforma de gestión ya activa — a medida que el sistema crezca, cada marca se estructurará de forma independiente.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Ecosistema 5 Marcas — Hostelería España + Italia</strong><br>
+  Documento estratégico interno · No distribuir<br>
+  Versión 1.0 ES · Mayo 2026
+</footer>
+
+</body>
+</html>
